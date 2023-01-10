@@ -26,9 +26,9 @@
                 <td>{{$project->title}}</td>
                 <td>{{$project->slug}}</td>
                 <td>
-                    <a class="btn btn-seconday" href="{{route('admin.projects.show', $project->slug)}}"><i class="fas fa-eye fa-sm fa-fw"></i></a>
-                    <i class="fas fa-pencil fa-sm fa-fw"></i>
-                    <i class="fas fa-trash fa-sm fa-fw"></i>
+                    <a class="btn btn-secondary" href="{{route('admin.projects.show', $project->slug)}}"><i class="fas fa-eye fa-sm fa-fw"></i></a>
+                    <a class="btn btn-primary" href="#"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
+                    <a class="btn btn-danger" href="#"><i class="fas fa-trash fa-sm fa-fw"></i></a>
                 </td>
             </tr>
             @empty
