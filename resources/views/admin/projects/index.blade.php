@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 @section('content')
+
+<div class="d-flex justify-content-between align-items-center my-4">
+    <h1>Projects</h1>
+    <a class="btn btn-primary" href="{{route('admin.projects.create')}}">Add New Project</a>
+</div>
 <div class="table-responsive">
     <table class="table table-striped
     table-hover	

@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -28,7 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -39,7 +40,13 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $projectSlug = Project::slugGenerator($data['title']);
+        $data['slug'] = $projectSlug;
+
+        Project::create($data);
+        return to_route('admin.projects.index');
     }
 
     /**
