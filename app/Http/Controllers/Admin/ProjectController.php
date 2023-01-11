@@ -83,7 +83,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $projectSlug = Project::slugGenerator($data['title']);
         $data['slug'] = $projectSlug;
-        $project->update();
+        $project->update($data);
         return to_route('admin.projects.index');
     }
 
