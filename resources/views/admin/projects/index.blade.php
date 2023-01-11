@@ -28,7 +28,36 @@
                 <td>
                     <a class="btn btn-secondary" href="{{route('admin.projects.show', $project->slug)}}"><i class="fas fa-eye fa-sm fa-fw"></i></a>
                     <a class="btn btn-primary" href="{{route('admin.projects.edit', $project->slug)}}"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
-                    <a class="btn btn-danger" href="#"><i class="fas fa-trash fa-sm fa-fw"></i></a>
+
+                    <!-- Modal trigger button -->
+                    <button type="button" class="btn btn-danger btn-md" data-bs-toggle="modal" data-bs-target="#project-{{$project->id}}">
+                        <i class="fas fa-trash fa-sm fa-fw"></i>
+                    </button>
+
+                    <!-- Modal Body -->
+                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                    <div class="modal fade" id="project-{{$project->id}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="project-{{$project->id}}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="project-{{$project->id}}"> Delete {{$project->title}}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this project?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="{{route('admin.projects.destroy', $project->slug)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input class="btn btn-danger" type="submit" value="confirm">
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
             @empty
