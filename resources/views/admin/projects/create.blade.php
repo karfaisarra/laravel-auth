@@ -4,6 +4,15 @@
 
 <h1>Add a new Project</h1>
 <form action="{{route('admin.projects.store')}} " method="post">
+    @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     @csrf
 
     <div class="mb-3">

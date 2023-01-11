@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'requared|unique:projects,title|max:100',
-            'description' => 'nullable|max:300'
+            'description' => 'nullable'
         ];
     }
 }
