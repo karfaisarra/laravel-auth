@@ -5,7 +5,7 @@
     @if($project->cover_image)
     <img width="200" src="{{asset('storage/' .$project->cover_image)}}" alt="">
     @else
-    <img src="https://picsum.photos/200/300" alt="">
+    <img width="200" src="https://picsum.photos/200/300" alt="">
     @endif
     <div class="details">
         <h2>{{$project->title}}</h2>

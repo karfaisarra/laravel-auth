@@ -44,6 +44,7 @@ class ProjectController extends Controller
         if ($request->hasFile('cover_image')) {
 
             $cover_image = Storage::put('uploads', $data['cover_image']);
+            //dd($cover_image);
             $data['cover_image'] = $cover_image;
         }
 
@@ -85,12 +86,18 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        //dd($request);
+
         $data = $request->validated();
         if ($request->hasFile('cover_image')) {
+            // dd($request->has('cover_image'));
+            // dd($project->cover_image);
             if ($project->cover_image) {
                 Storage::delete($project->cover_image);
             }
+            // dd($request->cover_image);
             $cover_image = Storage::put('uploads', $data['cover_image']);
+            //dd($cover_image);
             $data['cover_image'] = $cover_image;
         }
 
@@ -108,8 +115,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if ($project->cove_image) {
-            Storage::delete($project->cove_imag);
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
         }
         $project->delete();
         return to_route('admin.projects.index');
